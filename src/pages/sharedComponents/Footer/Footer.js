@@ -2,6 +2,7 @@ import React from 'react';
 import card from '../../../assets/images/card.png'
 import { FaFacebook, FaInstagram, FaDiscord } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+
 const Footer = () => {
     return (
         <div className='pt-32  bg-white '>
@@ -16,7 +17,7 @@ const Footer = () => {
                     </div>
                     <div className='grid grid-cols-3 gap-5 p-5 text-black'>
                         <div className=''>
-                            <p className='text-lg font-semibold font-mono'>Gadgets and Gear</p>
+                            <p className='text-lg font-semibold font-mono text-main'>Gadgets and Gear</p>
                             <div className='flex flex-col mt-5 gap-3 '>
                                 <Link className='hover:underline' to={'/terms-n-condition'}>Terms and condition</Link>
                                 <Link className='hover:underline' to={'/refund-policy'}>Refund policy</Link>
@@ -24,15 +25,15 @@ const Footer = () => {
                             </div>
                         </div>
                         <div>
-                            <p className='text-lg font-semibold font-mono'>Follow us</p>
-                            <div className='flex gap-4 text-2xl mt-3'>
+                            <p className='text-lg font-semibold font-mono text-main'>Follow us</p>
+                            <div className='flex gap-5 text-2xl mt-3 '>
                                 <a href="https://www.facebook.com/"><FaFacebook/></a>
                                 <a href="https://www.instagram.com/"><FaInstagram/></a>
                                 <a href="https://discord.com/"><FaDiscord/></a>
                             </div>
                         </div>
                         <div>
-                            <p className='text-lg font-semibold font-mono'>We accept</p>
+                            <p className='text-lg font-semibold font-mono text-main'>We accept</p>
                             <img src={card} alt="" className='mt-3'/>
                         </div>
                     </div>
