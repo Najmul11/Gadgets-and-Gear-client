@@ -10,7 +10,8 @@ module.exports = {
       second:'#e1e1e2',
       hover:'#cdced1',
       black:'#000000',
-      white:'#FFFFFF'
+      white:'#FFFFFF',
+      yellow:'#DAA520'
       
     },
     extend: {},

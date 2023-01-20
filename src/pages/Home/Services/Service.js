@@ -2,7 +2,7 @@ import React from 'react';
 
 const Service = ({Icon, title,height}) => {
     return (
-        <div className={`rounded-lg bg-second shadow-xl ${height && height}`}>
+        <div className={`rounded-lg bg-second shadow-lg ${height && height}`}>
             <div className=" flex items-center justify-center h-full">
                <div>
                     <Icon className='text-6xl text-main text-center mx-auto rounded-full bg-white  py-3'/>

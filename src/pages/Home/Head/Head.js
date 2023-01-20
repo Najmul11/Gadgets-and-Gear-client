@@ -6,7 +6,7 @@ import './Head.css'
 const Head = () => {
     return (
         <header className=''>
-            <div className='max-w-[1480px] mx-auto  flex gap-5 p-10 items-center clip-path rounded-br-lg'>
+            <div className='max-w-[1480px] mx-auto  flex gap-5 py-10 items-center clip-path rounded-br-lg'>
                 <div className='w-1/2 pr-10'>
                     <p className='uppercase font-medium text-main'>Welcome to</p>
                     <h1 className='text-6xl font-semibold'>Gadgets and Gear</h1>

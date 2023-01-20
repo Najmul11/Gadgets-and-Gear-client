@@ -7,7 +7,6 @@ import Dt from '../../../assets/images/home/logo slider/dt.png'
 import independent from '../../../assets/images/home/logo slider/independent.png'
 import star from '../../../assets/images/home/logo slider/star.png'
 import tbs from '../../../assets/images/home/logo slider/tbs.png'
-import './Featured.css'
 
 
 const Trusted = () => {
@@ -21,7 +20,7 @@ const Trusted = () => {
         cssEase: "linear"
       };
     return (
-        <div className='pb-20 bg-main featured-clip-path'>
+        <div className='pb-20 bg-main'>
             <div className='max-w-[1480px] mx-auto pt-8'>
                 <h3 className="text-4xl font-semibold text-center mb-12 font-mono text-white">Featured In</h3>
                 <div className='md:w-4/5 mx-auto'>
