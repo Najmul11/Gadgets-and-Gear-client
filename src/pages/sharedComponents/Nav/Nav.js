@@ -9,7 +9,7 @@ const Nav = () => {
 
     const menu=<>
         <li><NavLink className='btn text-black bg-transparent border-0 hover:bg-hover ml-3' to={'/'}>Home</NavLink></li>
-        <li><NavLink className='btn text-black bg-transparent border-0 hover:bg-hover ml-3' to={'/products'}>Products</NavLink></li>
+        <li><NavLink className='btn text-black bg-transparent border-0 hover:bg-hover ml-3' to={'/allproducts'}>Products</NavLink></li>
         <li><NavLink className='btn text-black bg-transparent border-0 hover:bg-hover ml-3' to={'/contact'}>Contact</NavLink></li>
         <li><NavLink className='btn text-black bg-transparent border-0 hover:bg-hover ml-3' to={'/about'}>About</NavLink></li>
         <li >

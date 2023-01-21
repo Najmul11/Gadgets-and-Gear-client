@@ -9,7 +9,7 @@ const ProductCard = ({product}) => {
         <Link to={`/products/${_id}`}>
             <div className="card bg-base-100 shadow-md rounded-md">
                 <figure className='relative'>
-                    <img src={image} alt="Shoes" />
+                    <img src={image} alt={name}  className='w-full h-[250px]'/>
                     <figcaption className='absolute top-5 right-5 bg-second font-medium rounded-xl px-3 py-[4px]'>{category}</figcaption>
                 </figure>
                 <div className="flex justify-between p-2">

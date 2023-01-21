@@ -1,0 +1,22 @@
+.multi-range-slider {
+    display: flex;
+    position: relative;
+    border: none !important;
+    border-radius: 10px;
+    padding: 20px 0px;
+    box-shadow: none;
+    flex-direction: column;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.bar-left{
+    box-shadow: none !important;
+}
+.bar-right{
+    box-shadow: none !important;
+}
+.bar-inner{
+    box-shadow: none !important;
+    border: none !important;
+}
