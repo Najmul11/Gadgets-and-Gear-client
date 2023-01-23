@@ -6,13 +6,22 @@ import { FilterdContext } from '../Products/Products';
 
 const AllProducts = () => {
     const {products}=useProductContext()
-    const {grid, filter}=useContext(FilterdContext)
+    const {grid, filter, company, search}=useContext(FilterdContext)
 
     let modifiedProducts=[...products]
+
+
+    if (search) {
+        modifiedProducts=modifiedProducts.filter(p=>p.name.includes(search.toLowerCase()))
+    }
 
     if (filter==='default') {
         modifiedProducts=products
     }
+    if (company) {
+        modifiedProducts=modifiedProducts.filter(p=>p.company===company)
+    }
+    
     if (filter==='highest') {
         modifiedProducts.sort((p1,p2)=>p2.price-p1.price);
     }
@@ -23,19 +32,29 @@ const AllProducts = () => {
     return (
         <div className='py-10'>
             {
-                grid ?
-                <div className='grid grid-cols-3 gap-10'>
-                    {
-                        modifiedProducts.map(p=><ProductCard key={p._id} product={p}></ProductCard>)
-                    }
+                modifiedProducts.length===0 ? 
+                <div>
+                    <p className='text-2xl '>No prod found</p>
                 </div>
                 :
-                <div className='flex flex-col gap-16'>
+                <>
                     {
-                        modifiedProducts.map(p=><ListView key={p._id} product={p}></ListView>)
-                    }
-                </div>
+                    grid ?
+                    <div className='grid grid-cols-3 gap-10'>
+                        {
+                            modifiedProducts.map(p=><ProductCard key={p._id} product={p}></ProductCard>)
+                        }
+                    </div>
+                    :
+                    <div className='flex flex-col gap-16'>
+                        {
+                            modifiedProducts.map(p=><ListView key={p._id} product={p}></ListView>)
+                        }
+                    </div>
+                }
+                </>
             }
+            
         </div>
     );
 };

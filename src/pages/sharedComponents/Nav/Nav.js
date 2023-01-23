@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {NavLink, Link} from 'react-router-dom'
 import brandLogo from '../../../assets/images/brand-logo.png'
 import {FiShoppingCart} from "react-icons/fi";
 import './Nav.css'
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Nav = () => {
     const [drop, setDrop]=useState(false)
+    const {user, logout}=useContext(AuthContext)
+
+    const handleSignout=()=>{
+        logout()
+        .then(()=>{})
+        .catch((err)=>{})
+    }
 
     const menu=<>
         <li><NavLink className='btn text-black bg-transparent border-0 hover:bg-hover ml-3' to={'/'}>Home</NavLink></li>
@@ -18,6 +26,20 @@ const Nav = () => {
                 <FiShoppingCart className='text-lg'/>
             </NavLink>
         </li>
+        {
+            !user ? 
+            <li><NavLink className='btn text-black bg-transparent border-0 hover:bg-hover ml-3' to={'/login'}>Login</NavLink></li>
+            :
+            <div className='flex items-center ml-5'>
+                <p className='bg-main cursor-default text-white bg-opacity-75 font-medium p-1 rounded-xl'>{user.displayName}</p>
+                <li>
+                    <button onClick={handleSignout}
+                    className='btn text-black bg-transparent border-0 hover:bg-hover ml-3' to={'/about'}>
+                    Logout
+                    </button>
+                </li>
+            </div>
+        }
     </>
 
     return (

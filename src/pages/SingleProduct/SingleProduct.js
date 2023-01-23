@@ -15,10 +15,12 @@ import AddToCart from './AddToCart';
 const SingleProduct = () => {
     const [singleProduct, setSingleProduct]=useState({})
     const [loading, setLoading]=useState(false)
+    
     const {id}=useParams()
-    const [quantity, setQuantity]=useState(1)
-
     const {name, company, price, colors, description, stock, reviews, image, stars}=singleProduct
+    const [color, setColor]=useState('')
+
+
 
 
     const api='http://localhost:5000/products'
@@ -31,13 +33,6 @@ const SingleProduct = () => {
            })
     },[id])
 
-    const setIncrease=()=>{
-        quantity<stock ? setQuantity(quantity + 1): setQuantity(quantity)
-    }
-
-    const setDecrease=()=>{
-        quantity>1 ?setQuantity(quantity - 1):setQuantity(1)
-    }
 
 
     if (loading) {
@@ -74,8 +69,8 @@ const SingleProduct = () => {
                         </div>
                         <p>Available: {stock>0 ? 'In Stock' : 'Out of Stock'}</p>
                         <p>Brand: {company}</p>
-                        {stock>0 && <ColorPicker colors={colors}/>}
-                        <AddToCart setIncrease={setIncrease} setDecrease={setDecrease} quantity={quantity}/>
+                        {stock>0 && <ColorPicker colors={colors} setColor={setColor}/>}
+                        <AddToCart product={singleProduct} color={color} image={image}/>
                     </div>
                </div>
            </div>

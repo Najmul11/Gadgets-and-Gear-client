@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <div className='pt-32  bg-main '>
-            <div className='bg-second pb-10'>
+        <div className='pt-32  '>
+            <div className=' pb-10'>
                 <div className=' relative  max-w-[1480px] mx-auto'>
-                    <div className='w-3/5 p-5  bg-white h-32 relative rounded-lg shadow-lg -top-[62px] left-[20%]'>
+                    <div className='w-3/5 p-5  bg-second h-32 relative rounded-lg shadow-lg -top-[62px] left-[20%]'>
                         <p className='font-medium'>Subscribe to get updates</p>
                         <div className='flex justify-between items-center  mt-3'>
                             <input type="text" placeholder="Your Email" className="input input-bordered w-3/5" />

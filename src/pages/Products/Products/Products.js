@@ -11,17 +11,19 @@ import MultiRangeSlider from "multi-range-slider-react";
 export const FilterdContext=createContext()
 
 
-const filterOptions=['price (highest)', 'price (lowest)']
 
 const Products = () => {
+    const [allCategories, setAllCategories]=useState({})
+
     const [grid, setGrid]=useState(true)
     const [filter, setFilter]=useState('')
+    const [company, setCompany]=useState('')
+    const [search, setSearch]=useState('')
+
     const [minValue, set_minValue] = useState(25);
     const [maxValue, set_maxValue] = useState(75);
 
-    const [allCategories, setAllCategories]=useState({})
-    
-
+   
     useEffect(()=>{
         axios.get('http://localhost:5000/categories')
         .then(res=>setAllCategories(res.data))
@@ -40,20 +42,18 @@ const Products = () => {
         setGrid(false)
         localStorage.setItem('grid', 'false')
     }
-    
-
     useEffect(()=>{
         const gridview=localStorage.getItem('grid')
         gridview==='true' ? setGrid(true) : setGrid(false)
     },[])
    
-    const filterInfo={grid,filter}
+    const filterInfo={grid,filter,company, search}
 
     return (
         <div>
             <div className='max-w-[1480px] mx-auto flex gap-5 py-20'>
                 <div className='w-1/5 '>
-                    <input type="text" className='input input-bordered input-sm rounded' placeholder='SEARCH'/>
+                    <input onChange={(e)=>setSearch(e.target.value)} type="text" className='input input-bordered input-sm rounded' placeholder='SEARCH'/>
                     <div className='py-10'>
                         <h3 className='font-medium text-xl'>Category</h3>
                         <div className='flex flex-col gap-3'>
@@ -65,9 +65,9 @@ const Products = () => {
                         <div className='mt-10'>
                             <h3 className='font-medium text-xl'>Company</h3>
                             <form className='mt-3'>
-                            <select name="" id="" className='select select-bordered rounded select-sm'>
+                            <select onChange={(e)=>setCompany(e.target.value)} className='select select-bordered rounded select-sm'>
                                 {
-                                     allCategories?.company?.map(c=><option value="">{c}</option>)
+                                     allCategories?.company?.map((c,i)=><option key={i} value={c}>{c}</option>)
                                 }
                             </select>
                             </form>
@@ -81,10 +81,10 @@ const Products = () => {
                                 onInput={(e) => { handleInput(e);}}
                                 />       
                             </div> 
-                            <button
+                            <a href='http://localhost:3000/allproducts'
                              className="btn  mt-5 btn-outline rounded-md border-main hover:bg-hover hover:border-main hover:text-main ">
                              Clear filter
-                            </button>      
+                            </a>      
                         </div>
                     </div>
                 </div>

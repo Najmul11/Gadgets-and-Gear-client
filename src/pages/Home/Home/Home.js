@@ -10,8 +10,8 @@ const Home = () => {
         <div className=''>
             <Head/>
             <FeaturedProducts/>
-            <Services/>
             <Trusted/>
+            <Services/>
         </div>
     );
 };

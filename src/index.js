@@ -5,15 +5,25 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ProductProvider } from './contexts/ProductProvider';
 import FilterProductsProvider from './contexts/FilterProductsProvider';
+import AuthProvider from './contexts/AuthProvider';
+import { QueryClient,QueryClientProvider} from '@tanstack/react-query'
+
+
+
+const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ProductProvider>
-      <FilterProductsProvider>
-        <App />
-      </FilterProductsProvider>
-    </ProductProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <ProductProvider>
+          <FilterProductsProvider>
+            <App />
+          </FilterProductsProvider>
+        </ProductProvider>
+      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 

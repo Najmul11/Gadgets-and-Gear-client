@@ -6,7 +6,7 @@ import Service from './Service';
 
 const Services = () => {
     return (
-        <div className='pb-32'>
+        <div className='p-32'>
             <div className='max-w-[1480px] grid grid-cols-3 gap-10 mx-auto'>
                 <div className=''>
                     <Service Icon={FiTruck} title={'Super Fast and Free Delivery'} height={'h-60'}/>
