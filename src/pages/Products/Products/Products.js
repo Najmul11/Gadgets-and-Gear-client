@@ -52,7 +52,7 @@ const Products = () => {
     return (
         <div>
             <div className='max-w-[1480px] mx-auto flex gap-5 py-20'>
-                <div className='w-1/5 '>
+                <div className='w-1/5 hidden lg:block'>
                     <input onChange={(e)=>setSearch(e.target.value)} type="text" className='input input-bordered input-sm rounded' placeholder='SEARCH'/>
                     <div className='py-10'>
                         <h3 className='font-medium text-xl'>Category</h3>
@@ -88,7 +88,7 @@ const Products = () => {
                         </div>
                     </div>
                 </div>
-                <div className='w-4/5'>
+                <div className='lg:w-4/5 px-2'>
                     <div className='flex justify-between items-center'>
                         <div className='flex gap-5 items-center'>
                             <button onClick={handleGrid} className={`p-1 text-2xl rounded ${grid ? 'bg-black text-white':''}`}><BiGridAlt/></button>

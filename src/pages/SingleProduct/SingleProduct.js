@@ -41,12 +41,12 @@ const SingleProduct = () => {
 
 
     return (
-        <div className='pt-32 h-screen'>
-           <div className='max-w-[1480px] mx-auto grid grid-cols-2 gap-12'>
-               <div>
+        <div className='lg:pt-32 h-screen pt-10' >
+           <div className='max-w-[1480px] mx-auto grid lg:grid-cols-2 gap-12'>
+               <div className='px-1'>
                     <Images images={image}/>
                </div>
-               <div>
+               <div className='px-1'>
                     <h3 className="text-3xl font-medium">{name}</h3>
                     <StartRating stars={stars} reviews={reviews}/>
                     <div className='flex flex-col gap-5 py-5 font-medium'>

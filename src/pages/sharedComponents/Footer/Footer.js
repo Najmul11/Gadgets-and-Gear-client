@@ -6,16 +6,18 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <div className='pt-32  '>
-            <div className=' pb-10'>
+            <div className=' pb-10 '>
                 <div className=' relative  max-w-[1480px] mx-auto'>
-                    <div className='w-3/5 p-5  bg-second h-32 relative rounded-lg shadow-lg -top-[62px] left-[20%]'>
+                    <div className='lg:w-2/5 p-5 bg-second h-32 relative rounded-lg shadow-lg -top-[62px] lg:left-[30%]'>
                         <p className='font-medium'>Subscribe to get updates</p>
                         <div className='flex justify-between items-center  mt-3'>
-                            <input type="text" placeholder="Your Email" className="input input-bordered w-3/5" />
-                            <button className='border-0 px-3   bg-main rounded-lg btn'>Subscribe</button>
+                            <div className="relative w-full">
+                                <input type="text" placeholder="username@site.com" className="input input-bordered w-full " /> 
+                                <button className="btn bg-main border-0 absolute top-0 right-0 rounded-l-none">Subscribe</button>
+                            </div>
                         </div>
                     </div>
-                    <div className='grid grid-cols-3 gap-5 p-5 text-black'>
+                    <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-5 p-5 text-black'>
                         <div className=''>
                             <p className='text-lg font-semibold font-mono text-main'>Gadgets and Gear</p>
                             <div className='flex flex-col mt-5 gap-3 '>
@@ -34,7 +36,7 @@ const Footer = () => {
                         </div>
                         <div>
                             <p className='text-lg font-semibold font-mono text-main'>We accept</p>
-                            <img src={card} alt="" className='mt-3'/>
+                            <img src={card} alt="" className='mt-3 w-full'/>
                         </div>
                     </div>
                 </div> 

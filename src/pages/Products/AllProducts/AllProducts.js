@@ -1,11 +1,12 @@
 import React, {useContext} from 'react';
 import { useProductContext } from '../../../hooks/useProductContext';
 import ProductCard from '../../Home/FeaturedProducts/ProductCard';
+import Loader from '../../sharedComponents/Loader/Loader';
 import ListView from '../ListView/ListView';
 import { FilterdContext } from '../Products/Products';
 
 const AllProducts = () => {
-    const {products}=useProductContext()
+    const {products, isLoading}=useProductContext()
     const {grid, filter, company, search}=useContext(FilterdContext)
 
     let modifiedProducts=[...products]
@@ -32,26 +33,32 @@ const AllProducts = () => {
     return (
         <div className='py-10'>
             {
-                modifiedProducts.length===0 ? 
-                <div>
-                    <p className='text-2xl '>No prod found</p>
-                </div>
+                isLoading ? <Loader/>
                 :
                 <>
                     {
-                    grid ?
-                    <div className='grid grid-cols-3 gap-10'>
-                        {
-                            modifiedProducts.map(p=><ProductCard key={p._id} product={p}></ProductCard>)
-                        }
-                    </div>
-                    :
-                    <div className='flex flex-col gap-16'>
-                        {
-                            modifiedProducts.map(p=><ListView key={p._id} product={p}></ListView>)
-                        }
-                    </div>
-                }
+                        modifiedProducts.length===0 ? 
+                        <div>
+                            <p className='text-2xl '>No prod found</p>
+                        </div>
+                        :
+                        <>
+                            {
+                                grid ?
+                                <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-10'>
+                                    {
+                                        modifiedProducts.map(p=><ProductCard key={p._id} product={p}></ProductCard>)
+                                    }
+                                </div>
+                                :
+                                <div className='flex flex-col gap-16'>
+                                    {
+                                        modifiedProducts.map(p=><ListView key={p._id} product={p}></ListView>)
+                                    }
+                                </div>
+                            }
+                        </>
+                    }
                 </>
             }
             

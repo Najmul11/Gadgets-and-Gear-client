@@ -4,25 +4,28 @@ import brandLogo from '../../../assets/images/brand-logo.png'
 import {FiShoppingCart} from "react-icons/fi";
 import './Nav.css'
 import { AuthContext } from '../../../contexts/AuthProvider';
+import FilterSection from './FilterSection/FilterSection';
+import { CartContext } from '../../../App';
 
 const Nav = () => {
     const [drop, setDrop]=useState(false)
     const {user, logout}=useContext(AuthContext)
+    const {items}=useContext(CartContext)
 
     const handleSignout=()=>{
         logout()
         .then(()=>{})
         .catch((err)=>{})
     }
+    
 
     const menu=<>
         <li><NavLink className='btn text-black bg-transparent border-0 hover:bg-hover ml-3' to={'/'}>Home</NavLink></li>
         <li><NavLink className='btn text-black bg-transparent border-0 hover:bg-hover ml-3' to={'/allproducts'}>Products</NavLink></li>
         <li><NavLink className='btn text-black bg-transparent border-0 hover:bg-hover ml-3' to={'/contact'}>Contact</NavLink></li>
-        <li><NavLink className='btn text-black bg-transparent border-0 hover:bg-hover ml-3' to={'/about'}>About</NavLink></li>
         <li >
             <NavLink to={'/cart'} className='border-0 relative btn text-black bg-transparent hover:bg-hover ml-3 '>
-            <span className=" absolute top-[4px] md:right-[0] right-[35%] text-main roundd-lg ">10</span> 
+            <span className="absolute top-[4px] md:right-[0] right-[35%] text-main roundd-lg ">{items.length}</span> 
                 <FiShoppingCart className='text-lg'/>
             </NavLink>
         </li>
@@ -51,9 +54,13 @@ const Nav = () => {
                     </label>
                     {
                         drop && 
+                        <>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-second rounded-box w-56">
                             {menu}
+                            <FilterSection/>
                         </ul>
+                        </>
+
                     }
                 </div>
                 <div className="flex-1 ">

@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import {useLocation, useNavigate } from 'react-router-dom';
+import { CartContext } from '../../App';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const AddToCart = ({ product, color, image}) => {
     const {user}=useContext(AuthContext)
     const navigate=useNavigate()
     const location=useLocation()
+    const {refetch}=useContext(CartContext)
 
     const addToCart=()=>{
         if (!user) {
@@ -21,6 +23,8 @@ const AddToCart = ({ product, color, image}) => {
             company:product.company,
             quantity:1,
             color:color,
+            stock:product.stock,
+            subTotal:product.price,
             price:product.price,
             image:image[0].url
         }
@@ -34,7 +38,9 @@ const AddToCart = ({ product, color, image}) => {
         })
         .then(res=>res.json())
         .then(data=>{
+            console.log(data);
             if (data.acknowledged) {
+                refetch()
                 toast.success('Item added to cart')
             }
         })
