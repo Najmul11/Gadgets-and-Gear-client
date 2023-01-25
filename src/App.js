@@ -20,6 +20,7 @@ function App() {
           return data
       }
   })
+
   const cartInfo={refetch, items, isLoading}
   return (
     <CartContext.Provider value={cartInfo}>

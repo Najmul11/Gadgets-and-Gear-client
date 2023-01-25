@@ -1,17 +1,25 @@
 import { createBrowserRouter } from "react-router-dom";
+import DashBoardLayout from "../layouts/DashBoardLayout";
 import Main from "../layouts/Main";
 import SecondaryLayout from "../layouts/SecondaryLayout";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
 import Cart from "../pages/Cart/Cart";
 import Contact from "../pages/Contact/Contact/Contact";
+import AdAllProducts from "../pages/Dashboard/AdAllProducts/AdAllProducts";
+import Address from "../pages/Dashboard/AccountDetails/Address";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import Orders from "../pages/Dashboard/Orders/Orders";
 import Error from "../pages/Error/Error";
 import Home from "../pages/Home/Home/Home";
 import AllProducts from "../pages/Products/AllProducts/AllProducts";
 import DynamicCategory from "../pages/Products/DynamicCategory/DynamicCategory";
 import Products from "../pages/Products/Products/Products";
 import SingleProduct from "../pages/SingleProduct/SingleProduct";
+import AdminRoute from "./AdminRoute";
+import PrivateRoute from "./PrivateRoute";
+import AccountDetails from "../pages/Dashboard/AccountDetails/AccountDetails";
+import AllOrders from "../pages/Dashboard/AllOrders/AllOrders";
 
 export const router=createBrowserRouter([
     {
@@ -87,7 +95,7 @@ export const router=createBrowserRouter([
         children:[
             {
                 path:'/cart',
-                element:<Cart/>
+                element:<PrivateRoute><Cart/></PrivateRoute>
             }
         ]
     },
@@ -96,17 +104,31 @@ export const router=createBrowserRouter([
 
     {
         path:'/dashboard',
-        element:<SecondaryLayout/>,
+        element:<PrivateRoute><DashBoardLayout/></PrivateRoute>,
         children:[
             {
                 path:'/dashboard',
                 element:<Dashboard/>
-            }
+            },
+            {
+                path:'/dashboard/orders',
+                element:<Orders/>
+            },
+            {
+                path:'/dashboard/account_details',
+                element:<AccountDetails/>
+            },
+            {
+                path:'/dashboard/all_orders',
+                element:<AllOrders/>
+            },
+            {
+                path:'/dashboard/all_products',
+                element:<AdminRoute><AdAllProducts/></AdminRoute>
+            },
         ]
 
     },
-
-    
 
     {
         path:'/*',

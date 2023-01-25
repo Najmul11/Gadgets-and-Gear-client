@@ -34,7 +34,7 @@ const Nav = () => {
             <li><NavLink className='btn text-black bg-transparent border-0 hover:bg-hover ml-3' to={'/login'}>Login</NavLink></li>
             :
             <div className='flex items-center ml-5'>
-                <p className='bg-main cursor-default text-white bg-opacity-75 font-medium p-1 rounded-xl'>{user.displayName}</p>
+                <Link to={'/dashboard'} className='bg-main  text-white bg-opacity-75 font-medium p-1 rounded-xl'>{user.displayName}</Link>
                 <li>
                     <button onClick={handleSignout}
                     className='btn text-black bg-transparent border-0 hover:bg-hover ml-3' to={'/about'}>
@@ -67,6 +67,11 @@ const Nav = () => {
                     <Link className="btn text-black bg-transparent border-0 hover:bg-hover normal-case text-xl w-[180px]">
                         <img src={brandLogo} alt="" className='w-[180px]'/>
                     </Link>
+                </div>
+                <div className='md:hidden flex-none'>
+                    <label htmlFor="dashboard-drawer" tabIndex={0} className="btn btn-ghost md:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    </label>
                 </div>
                 <div className="flex-none hidden md:block">
                     <ul className="menu menu-horizontal px-1">

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { CartContext } from '../../App';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { priceFormat } from '../../utilities/priceFormat';
@@ -14,6 +14,8 @@ const Cart = () => {
     const [total, setTotal]=useState('')
     const {refetch, isLoading, items}=useContext(CartContext)
 
+    const navigate=useNavigate()
+
  
     
     useEffect(()=>{
@@ -21,7 +23,6 @@ const Cart = () => {
         let shipping=100000
         items?.forEach(item =>{
             totalSub=item.subTotal + totalSub
-            console.log(item.subTotal );
             let total =totalSub + shipping
             setTotalSub(priceFormat(totalSub))
             setTotal(priceFormat(total))
@@ -43,6 +44,29 @@ const Cart = () => {
                 refetch()
            }
        })
+    }
+
+    const postOrder=()=>{
+        const order={
+            email:user?.email,
+            status:'pending',
+            items:items
+        }
+        console.log(order);
+        fetch('http://localhost:5000/orders',{
+            method:'POST',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(order)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if (data.acknowledged) {
+                deleteItems()
+                navigate('/dashboard/orders')
+            }
+        })
     }
 
     if (isLoading) {
@@ -100,7 +124,7 @@ const Cart = () => {
                                     <p className='font-medium'>{total}</p>
                                 </div>
                                 <div className=' mt-5'>
-                                    <button
+                                    <button onClick={postOrder}
                                         className="btn rounded-md w-full btn-sm border-main bg-main hover:bg-hover hover:border-main hover:text-black ">
                                         checkout
                                     </button>
