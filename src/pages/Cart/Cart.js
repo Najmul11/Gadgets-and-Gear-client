@@ -37,7 +37,6 @@ const Cart = () => {
             status:'pending',
             items:items
         }
-        console.log(order);
         fetch('http://localhost:5000/orders',{
             method:'POST',
             headers:{

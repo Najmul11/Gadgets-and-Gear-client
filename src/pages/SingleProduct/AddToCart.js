@@ -38,7 +38,6 @@ const AddToCart = ({ product, color, image}) => {
         })
         .then(res=>res.json())
         .then(data=>{
-            console.log(data);
             if (data.acknowledged) {
                 refetch()
                 toast.success('Item added to cart')
