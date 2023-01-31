@@ -4,7 +4,7 @@ import { BsList} from 'react-icons/bs';
 import { BiGridAlt} from 'react-icons/bi';
 import './Product.css'
 import axios from 'axios';
-import MultiRangeSlider from "multi-range-slider-react";
+import useTitle from '../../../hooks/useTitle';
 
 
 
@@ -13,6 +13,7 @@ export const FilterdContext=createContext()
 
 
 const Products = () => {
+    useTitle('Products')
     const [allCategories, setAllCategories]=useState({})
 
     const [grid, setGrid]=useState(true)
@@ -20,8 +21,7 @@ const Products = () => {
     const [company, setCompany]=useState('')
     const [search, setSearch]=useState('')
 
-    const [minValue, set_minValue] = useState(25);
-    const [maxValue, set_maxValue] = useState(75);
+   
 
    
     useEffect(()=>{
@@ -29,10 +29,7 @@ const Products = () => {
         .then(res=>setAllCategories(res.data))
     },[])
 
-    const handleInput = (e) => {
-        set_minValue(e.minValue);
-        set_maxValue(e.maxValue);
-    };
+    
 
     const handleGrid=()=>{
         setGrid(true)
@@ -59,7 +56,7 @@ const Products = () => {
                         <div className='flex flex-col gap-3'>
                             <p  className={'mt-2'}><Link to='/allproducts'>All</Link></p>
                             {
-                                allCategories?.category?.map(c=><p><NavLink to={`/allproducts/${c}`}>{c}</NavLink></p> )
+                                allCategories?.category?.map((c,i)=><p key={i}><NavLink to={`/allproducts/${c}`}>{c}</NavLink></p> )
                             }
                         </div>
                         <div className='mt-10'>
@@ -73,14 +70,6 @@ const Products = () => {
                             </form>
                         </div>
                         <div className='mt-10'>
-                            <h3 className='font-medium text-xl'>Price</h3>
-                            <div className='w-3/5'>
-                                <MultiRangeSlider min={0} max={300000} 
-                                className={'multi-range-slider bar-left bar-right bar-inner'}
-                                step={5} minValue={minValue} maxValue={maxValue} ruler={false} label={false} barLeftColor={'#e1e1e2'} barRightColor={'#e1e1e2'} barInnerColor={'#0080af'}
-                                onInput={(e) => { handleInput(e);}}
-                                />       
-                            </div> 
                             <a href='http://localhost:3000/allproducts'
                              className="btn  mt-5 btn-outline rounded-md border-main hover:bg-hover hover:border-main hover:text-main ">
                              Clear filter
@@ -96,7 +85,7 @@ const Products = () => {
                         </div>
                         <p className='font-medium'>12 products</p>
                         <select onChange={(e)=>setFilter(e.target.value)} id="" className='select select-bordered rounded select-sm'>
-                            <option value={'default'} selected>Default sorting</option>
+                            <option value={'default'}>Default sorting</option>
                             <option value={'highest'}>price (highest)</option>
                             <option value={'lowest'}>price (lowest)</option>
                         </select>

@@ -6,7 +6,7 @@ const Images = ({images}) => {
         <div className='flex flex-col lg:flex-row gap-5 items-center'>
             <div className='flex lg:flex-col gap-5 lg:w-1/3'>
                 {
-                    images?.map((image, i)=> <figure className='cursor-pointer'>
+                    images?.map((image, i)=> <figure key={i} className='cursor-pointer'>
                         <img src={image.url} alt={image.filename}
                         onClick={()=>setMainImage(i)}
                         />

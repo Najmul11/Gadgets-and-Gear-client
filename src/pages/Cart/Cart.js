@@ -3,34 +3,19 @@ import { toast } from 'react-hot-toast';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { CartContext } from '../../App';
 import { AuthContext } from '../../contexts/AuthProvider';
-import { priceFormat } from '../../utilities/priceFormat';
+import useTitle from '../../hooks/useTitle';
 import Loader from '../sharedComponents/Loader/Loader';
 import CartItem from './CartItem';
 
 const Cart = () => {
+    useTitle('Cart')
     const {user}=useContext(AuthContext)
-    const [totalSub, setTotalSub]=useState('')
-    const [shipping, setShipping]=useState('')
-    const [total, setTotal]=useState('')
     const {refetch, isLoading, items}=useContext(CartContext)
 
     const navigate=useNavigate()
 
  
     
-    useEffect(()=>{
-        let totalSub=0
-        let shipping=100000
-        items?.forEach(item =>{
-            totalSub=item.subTotal + totalSub
-            let total =totalSub + shipping
-            setTotalSub(priceFormat(totalSub))
-            setTotal(priceFormat(total))
-            setShipping(priceFormat(shipping))
-            refetch()
-        });
-        
-    },[items, refetch])
   
 
     const deleteItems=()=>{
@@ -113,19 +98,19 @@ const Cart = () => {
                             <div className='w-[300px]  p-10 bg-second  rounded-lg'>
                                 <div className='flex justify-between'>
                                     <p>Subtotal:</p>
-                                    <p className='font-medium'>{totalSub}</p>
+                                    <p className='font-medium'>sample</p>
                                 </div>
                                 <div className='flex justify-between'>
                                     <p>Shipping Fee:</p>
-                                    <p className='font-medium'>{shipping}</p>
+                                    <p className='font-medium'>sample</p>
                                 </div> <hr className=' mt-3' />
                                 <div className='flex justify-between'>
                                     <p>Total:</p>
-                                    <p className='font-medium'>{total}</p>
+                                    <p className='font-medium'>sample</p>
                                 </div>
                                 <div className=' mt-5'>
                                     <button onClick={postOrder}
-                                        className="btn rounded-md w-full btn-sm border-main bg-main hover:bg-hover hover:border-main hover:text-black ">
+                                        className="btn rounded-md w-full btn-sm border-main bg-main hover:bg-hover hover:border-main hover:text-black">
                                         checkout
                                     </button>
                                 </div>

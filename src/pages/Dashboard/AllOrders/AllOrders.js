@@ -18,7 +18,7 @@ const AllOrders = () => {
     return (
         <div className='py-8'>
             {
-                orders.map(o=><Order key={o._id} order={o} refetch={refetch}></Order>)
+                orders.length >0 && orders?.map(o=><Order key={o._id} order={o} refetch={refetch}></Order>)
             }
         </div>
     );

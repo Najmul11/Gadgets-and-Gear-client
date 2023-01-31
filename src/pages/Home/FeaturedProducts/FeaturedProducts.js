@@ -19,7 +19,7 @@ const FeaturedProducts = () => {
             </div>
             <div className='grid md:grid-cols-3 gap-10 max-w-[1480px] mx-auto'>
                 {
-                  featureProducts.map(product=><ProductCard key={product.id} product={product}></ProductCard>)
+                  featureProducts.map(product=><ProductCard key={product._id} product={product}></ProductCard>)
                 }
             </div>
         </div>

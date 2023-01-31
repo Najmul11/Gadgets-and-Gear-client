@@ -9,10 +9,12 @@ import Images from './Images';
 import StartRating from './StarRating';
 import ColorPicker from './ColorPicker';
 import AddToCart from './AddToCart';
+import useTitle from '../../hooks/useTitle';
 
 
 
 const SingleProduct = () => {
+    useTitle('Product Details')
     const [singleProduct, setSingleProduct]=useState({})
     const [loading, setLoading]=useState(false)
     

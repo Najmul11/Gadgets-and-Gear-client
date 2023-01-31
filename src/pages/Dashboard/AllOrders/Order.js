@@ -19,7 +19,9 @@ const Order = ({order, refetch}) => {
         })
         .then(res=>res.json())
         .then(data=>{
-            refetch()
+            if (data.acknowledged) {
+                refetch()
+            }
         })
     }
     return (
@@ -28,7 +30,7 @@ const Order = ({order, refetch}) => {
             <div className='grid grid-cols-4 gap-3 '>
                 {
                     items.map(item=>
-                        <div className='mt-3'>
+                        <div key={item.id} className='mt-3'>
                             <div>
                                 <img src={item.image} alt="" className='w-32 '/>
                             </div>

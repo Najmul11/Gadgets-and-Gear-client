@@ -12,10 +12,10 @@ const Loader = ({classes}) => {
             ariaLabel="three-dots-loading"
             wrapperStyle={{}}
             wrapperClassName=""
-            visible={true}
+            visible={true} 
             />
         </div>
     );
-};
+}; 
 
 export default Loader;

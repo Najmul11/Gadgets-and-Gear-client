@@ -3,7 +3,7 @@ import React from 'react';
 const AdAllProducts = () => {
     return (
         <div>
-            jmmm
+            Im not ready yet ....
         </div>
     );
 };

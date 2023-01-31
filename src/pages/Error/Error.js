@@ -1,8 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import useTitle from '../../hooks/useTitle';
 import Button from '../sharedComponents/Button/Button';
 
 const Error = () => {
+    useTitle('Something went wrong')
     return (
         <section class="bg-second ">
         <div class="flex items-center justify-center h-screen">
